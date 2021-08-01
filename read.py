@@ -1,7 +1,8 @@
 #讀取留言並分析
+file = 'reviews.txt'
 data = []
 count = 0
-with open('reviews.txt', 'r') as f:
+with open(file, 'r') as f:
       for line in f:
             data.append(line.strip())
             count += 1 #每讀取一筆增加一個 count
@@ -23,8 +24,15 @@ avg_len = sum_len / len(data)
 print('平均留言長度為', avg_len, '個字')
 
 #平均留言長度2
-wc = [] #建立留言長度清單
+#wc = [] #建立留言長度清單
+#for d in data:
+#      wc.append(len(d)) #每讀取一筆資料長度存回清單
+#avg_len = sum(wc) / len(data) #加總清單資料並除與幾筆資料得到平均長度
+#print('平均留言長度為', avg_len, '個字')
+
+wc100 = []
 for d in data:
-	wc.append(len(d)) #每讀取一筆資料長度存回清單
-avg_len = sum(wc) / len(data) #加總清單資料並除與幾筆資料得到平均長度
-print('平均留言長度為', avg_len, '個字')
+      if len(d) < 100:
+          wc100.append(d)
+print('一共有',len(wc100), '筆留言長度小於一百字')
+print(wc100[0])
